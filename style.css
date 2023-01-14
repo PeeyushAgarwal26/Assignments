@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.add-details {
+    padding: 50px;
+    position: absolute;
+    font-size: 18px;
+    font-family: 'Lexend Deca', sans-serif;
+    text-align: center;
+    color: #fff;
+    line-height: 38px;
+}
+
+.add-details span {
+    padding: 5px;
+    border: 5px solid #222;
+    border-radius: 5px;
+}
+
+.add-details a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Main content */
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0e1538;
+}
+
+.card-container {
+    position: absolute;
+    width: 300px;
+    height: 350px;
+    perspective: 500px;
+}
+  
+/* Animation For Card Flip Starts */
+
+.card {
+    position: absolute;
+    background-color: #222;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    transition: transform 1s linear;
+    transform-style: preserve-3d;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card-container:hover .card {
+    transform: rotateY(180deg) ;
+    transition: transform 1s;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backface-visibility: hidden;
+}
+
+/* Animation For Card Flip Ends */
+
+.card-front img {
+    margin-top: 35px;
+    border-radius: 50%;
+    border: 3px solid rgb(177, 177, 177);
+}
+
+.card-front h2 {
+    font-size: 28px;
+    margin-top: 25px;
+}
+
+.card-front span {
+    font-size: 18px;
+    margin-top: 10px;
+}
+  
+.card-back {
+    background: #222;
+    color: white;
+    transform: rotateY( 180deg );
+    display: flex;
+}
+
+.card-back ul {
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card-back li {
+    list-style: none;
+    gap: 5px;
+}
+
+.card-back i {
+    padding: 4px;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.card-back li a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Animation of Card Part */
+
+.card-front::before,
+.card-back::before {
+    content: '';
+    top: -100px;
+    position: absolute;
+    width: 150px;
+    height: 160%;
+    background: linear-gradient( #00ccff, #d400d4);
+    animation: animation 2s linear infinite;
+    z-index: -2;
+}
+
+.card-back::before {
+    left: 80px;
+}
+
+.card-front::after,
+.card-back::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    background: #0e1538;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+@keyframes animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Icons Animation */
+
+.fa-phone {
+    animation: phone .45s infinite linear;
+}
+
+@keyframes phone {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(70deg);
+    }
+}
+
+.card-back i.fa-location-dot {
+    animation: location .45s infinite linear;
+}
+
+@keyframes location {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsiveness */
+
+@media (max-width: 475px) {
+    .add-details {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .add-details {
+        font-size: 10px;
+    }
+}
